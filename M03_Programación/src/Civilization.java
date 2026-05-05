@@ -207,4 +207,6 @@ public class Civilization {
         System.out.println("Spearman: " + army[1].size());
         System.out.println("Crossbow: " + army[2].size());
         System.out.println("Cannon: " + army[3].size());
+        
+    }
 }
