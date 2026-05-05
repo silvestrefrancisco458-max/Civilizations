@@ -1,5 +1,5 @@
-public abstract class attackUnit implements MilitaryUnit {
-    
+public abstract class AttackUnit implements MilitaryUnit {
+
     protected int armor;
     protected int initialArmor;
     protected int baseDamage;
@@ -9,7 +9,6 @@ public abstract class attackUnit implements MilitaryUnit {
         this.initialArmor = armor;
         this.baseDamage = baseDamage;
     }
-
 
     public int attack() {
         return baseDamage;
@@ -22,7 +21,6 @@ public abstract class attackUnit implements MilitaryUnit {
     public int getActualArmor() {
         return armor;
     }
-
 
     public void resetArmor() {
         armor = initialArmor;

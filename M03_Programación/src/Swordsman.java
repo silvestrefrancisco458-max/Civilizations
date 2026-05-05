@@ -1,5 +1,5 @@
-public class Swordsman extends attackUnit {
-    
+public class Swordsman extends AttackUnit {
+
     public Swordsman() {
         super(400, 80);
     }

@@ -1,12 +1,13 @@
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Civilization {
+
     private int food;
     private int wood;
     private int iron;
     private int mana;
 
-    private int farms;
+    private int farm;
     private int smithy;
     private int carpentry;
     private int magicTower;
@@ -15,18 +16,18 @@ public class Civilization {
     private ArrayList<MilitaryUnit> army;
 
     public Civilization() {
-        this.food = 50000;
-        this.wood = 50000;
-        this.iron = 50000;
-        this.mana = 0;
+        food = 50000;
+        wood = 50000;
+        iron = 50000;
+        mana = 0;
 
-        this.farms = 0;
-        this.smithy = 0;
-        this.carpentry = 0;
-        this.magicTower = 0;
-        this.church = 0;
+        farm = 0;
+        smithy = 0;
+        carpentry = 0;
+        magicTower = 0;
+        church = 0;
 
-        this.army = new ArrayList<>();
+        army = new ArrayList<>();
     }
 
     public void newFarm() {
@@ -34,7 +35,7 @@ public class Civilization {
             food -= 5000;
             wood -= 10000;
             iron -= 12000;
-            farms++;
+            farm++;
             System.out.println("Granja creada correctamente.");
         } else {
             System.out.println("No tienes recursos suficientes.");
@@ -82,7 +83,6 @@ public class Civilization {
                 army.add(swordsman);
                 created++;
             } else {
-                System.out.println("No tienes recursos suficientes para crear más espadachines.");
                 break;
             }
         }
