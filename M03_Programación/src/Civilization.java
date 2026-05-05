@@ -13,7 +13,7 @@ public class Civilization {
     private int magicTower;
     private int church;
 
-    private ArrayList<MilitaryUnit> army;
+    private ArrayList<MilitaryUnit>[] army;
 
     public Civilization() {
         food = 50000;
@@ -27,7 +27,10 @@ public class Civilization {
         magicTower = 0;
         church = 0;
 
-        army = new ArrayList<>();
+        army = new ArrayList[9];
+        for (int i = 0; i < army.length; i++) {
+            army[i] = new ArrayList<>();
+        }
     }
 
     public void newFarm() {
@@ -80,7 +83,7 @@ public class Civilization {
                 wood -= swordsman.getWoodCost();
                 iron -= swordsman.getIronCost();
 
-                army.add(swordsman);
+                army[0].add(swordsman);
                 created++;
             } else {
                 break;
@@ -104,7 +107,7 @@ public class Civilization {
                 wood -= spearman.getWoodCost();
                 iron -= spearman.getIronCost();
 
-                army.add(spearman);
+                army[1].add(spearman);
                 created++;
             } else {
                 break;
@@ -152,7 +155,7 @@ public class Civilization {
                 wood -= crossbow.getWoodCost();
                 iron -= crossbow.getIronCost();
 
-                army.add(crossbow);
+                army[2].add(crossbow);
                 created++;
             } else {
                 break;
@@ -176,7 +179,7 @@ public class Civilization {
                 wood -= cannon.getWoodCost();
                 iron -= cannon.getIronCost();
 
-                army.add(cannon);
+                army[3].add(cannon);
                 created++;
             } else {
                 break;
@@ -199,6 +202,9 @@ public class Civilization {
         System.out.println("Magic Tower: " + magicTower);
         System.out.println("Church: " + church);
 
-        System.out.println("Army units: " + army.size());
-    }
+        System.out.println("Army units: " + army.length);
+        System.out.println("Swordsman: " + army[0].size());
+        System.out.println("Spearman: " + army[1].size());
+        System.out.println("Crossbow: " + army[2].size());
+        System.out.println("Cannon: " + army[3].size());
 }
