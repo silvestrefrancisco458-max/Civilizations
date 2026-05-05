@@ -90,6 +90,30 @@ public class Civilization {
         System.out.println("Espadachines creados: " + created);
     }
 
+    public void newSpearman(int n) {
+        int created = 0;
+
+        for (int i = 0; i < n; i++) {
+            Spearman spearman = new Spearman();
+
+            if (food >= spearman.getFoodCost()
+                    && wood >= spearman.getWoodCost()
+                    && iron >= spearman.getIronCost()) {
+
+                food -= spearman.getFoodCost();
+                wood -= spearman.getWoodCost();
+                iron -= spearman.getIronCost();
+
+                army.add(spearman);
+                created++;
+            } else {
+                break;
+            }
+        }
+
+        System.out.println("Lanceros creados: " + created);
+    }
+
     public void printStats() {
         System.out.println("===== CIVILIZATION STATS =====");
         System.out.println("Food: " + food);

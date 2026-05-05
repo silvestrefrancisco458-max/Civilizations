@@ -13,6 +13,7 @@ public class Main {
             System.out.println("3. Crear herrería");
             System.out.println("4. Crear carpintería");
             System.out.println("5. Crear espadachines");
+            System.out.println("6. Crear lanceros");
             System.out.println("0. Salir");
             System.out.print("Elige una opción: ");
 
@@ -31,6 +32,10 @@ public class Main {
                 System.out.print("Cantidad de espadachines: ");
                 int n = sc.nextInt();
                 civilization.newSwordsman(n);
+            } else if (option == 6) {
+                System.out.print("Cantidad de lanceros: ");
+                int n = sc.nextInt();
+                civilization.newSpearman(n);
             } else if (option == 0) {
                 System.out.println("¡Salir del Juego!");
                 break;
