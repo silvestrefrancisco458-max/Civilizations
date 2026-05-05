@@ -6,12 +6,16 @@ public class Battle {
     private ArrayList<MilitaryUnit>[] civilizationArmy;
     private ArrayList<MilitaryUnit>[] enemyArmy;
     private String battleDevelopment;
+    private int wasteWood;
+    private int wasteIron;
     private Random random;
 
     public Battle(ArrayList<MilitaryUnit>[] civilizationArmy, ArrayList<MilitaryUnit>[] enemyArmy) {
         this.civilizationArmy = civilizationArmy;
         this.enemyArmy = enemyArmy;
         this.battleDevelopment = "";
+        this.wasteWood = 0;
+        this.wasteIron = 0;
         this.random = new Random();
     }
 
@@ -37,6 +41,9 @@ public class Battle {
         } else {
             battleDevelopment += "Winner: Enemy\n";
         }
+
+        battleDevelopment += "Waste generated wood: " + wasteWood + "\n";
+        battleDevelopment += "Waste generated iron: " + wasteIron + "\n";
     }
 
     private void attack(ArrayList<MilitaryUnit>[] attackerArmy,
@@ -44,8 +51,8 @@ public class Battle {
                         String attackerName,
                         String defenderName) {
 
-        MilitaryUnit attacker = getRandomUnit(attackerArmy);
-        MilitaryUnit defender = getRandomUnit(defenderArmy);
+        MilitaryUnit attacker = getRandomUnitByGroup(attackerArmy);
+        MilitaryUnit defender = getRandomUnitByGroup(defenderArmy);
 
         if (attacker == null || defender == null) {
             return;
@@ -59,25 +66,34 @@ public class Battle {
         battleDevelopment += "Defender armor: " + defender.getActualArmor() + "\n";
 
         if (defender.getActualArmor() <= 0) {
+            wasteWood += defender.getWoodCost() * 70 / 100;
+            wasteIron += defender.getIronCost() * 70 / 100;
             removeDeadUnit(defenderArmy, defender);
-            battleDevelopment += "A unit has been eliminated.\n";
+            battleDevelopment += "Unit eliminated.\n";
         }
 
-        battleDevelopment += "--------------------------\n";
+        battleDevelopment += "----------------------\n";
     }
 
-    private MilitaryUnit getRandomUnit(ArrayList<MilitaryUnit>[] army) {
-        ArrayList<MilitaryUnit> allUnits = new ArrayList<>();
+    private MilitaryUnit getRandomUnitByGroup(ArrayList<MilitaryUnit>[] army) {
+        int total = getTotalUnits(army);
 
-        for (ArrayList<MilitaryUnit> group : army) {
-            allUnits.addAll(group);
-        }
-
-        if (allUnits.isEmpty()) {
+        if (total == 0) {
             return null;
         }
 
-        return allUnits.get(random.nextInt(allUnits.size()));
+        int randomNumber = random.nextInt(total) + 1;
+        int sum = 0;
+
+        for (ArrayList<MilitaryUnit> group : army) {
+            sum += group.size();
+
+            if (randomNumber <= sum && !group.isEmpty()) {
+                return group.get(random.nextInt(group.size()));
+            }
+        }
+
+        return null;
     }
 
     private void removeDeadUnit(ArrayList<MilitaryUnit>[] army, MilitaryUnit unit) {

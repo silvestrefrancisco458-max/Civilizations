@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Civilization {
+public class Civilization implements Variables {
 
     private int food;
     private int wood;
@@ -13,7 +13,11 @@ public class Civilization {
     private int magicTower;
     private int church;
 
+    private int technologyDefense;
+    private int technologyAttack;
+
     private ArrayList<MilitaryUnit>[] army;
+    private ArrayList<MilitaryUnit>[] enemyArmy;
 
     public Civilization() {
         food = 50000;
@@ -26,10 +30,17 @@ public class Civilization {
         carpentry = 0;
         magicTower = 0;
         church = 0;
+        technologyDefense = 0;
+        technologyAttack = 0;
 
         army = new ArrayList[9];
         for (int i = 0; i < army.length; i++) {
             army[i] = new ArrayList<>();
+        }
+
+        enemyArmy = new ArrayList[9];
+        for (int i = 0; i < enemyArmy.length; i++) {
+            enemyArmy[i] = new ArrayList<>();
         }
     }
 
@@ -67,6 +78,38 @@ public class Civilization {
         } else {
             System.out.println("No tienes recursos suficientes.");
         }
+    }
+
+    public void createEnemyArmy() {
+        for (int i = 0; i < enemyArmy.length; i++) {
+            enemyArmy[i].clear();
+        }
+
+        enemyArmy[0].add(new Swordsman());
+        enemyArmy[0].add(new Swordsman());
+        enemyArmy[1].add(new Spearman());
+        enemyArmy[2].add(new Crossbow());
+        enemyArmy[3].add(new Cannon());
+
+        System.out.println("Ejército enemigo creado.");
+    }
+
+    public void viewThreat() {
+        System.out.println("===== NEW THREAT COMING =====");
+        System.out.println("Enemy Swordsman: " + enemyArmy[0].size());
+        System.out.println("Enemy Spearman: " + enemyArmy[1].size());
+        System.out.println("Enemy Crossbow: " + enemyArmy[2].size());
+        System.out.println("Enemy Cannon: " + enemyArmy[3].size());
+    }
+
+    public void simulateBattle() {
+        createEnemyArmy();
+        viewThreat();
+
+        Battle battle = new Battle(army, enemyArmy);
+        battle.startBattle();
+
+        System.out.println(battle.getBattleDevelopment());
     }
 
     public void newSwordsman(int n) {
@@ -307,30 +350,68 @@ public class Civilization {
         return army;
     }
 
+    public void upgradeTechnologyDefense() {
+        if (iron >= UPGRADE_BASE_DEFENSE_TECHNOLOGY_IRON_COST) {
+            iron -= UPGRADE_BASE_DEFENSE_TECHNOLOGY_IRON_COST;
+            technologyDefense++;
+            System.out.println("Tecnología de defensa mejorada.");
+        } else {
+            System.out.println("No tienes hierro suficiente.");
+        }
+    }
+
+    public void upgradeTechnologyAttack() {
+        if (iron >= UPGRADE_BASE_ATTACK_TECHNOLOGY_IRON_COST) {
+            iron -= UPGRADE_BASE_ATTACK_TECHNOLOGY_IRON_COST;
+            technologyAttack++;
+            System.out.println("Tecnología de ataque mejorada.");
+        } else {
+            System.out.println("No tienes hierro suficiente.");
+        }
+    }
+
+    public void generateResources() {
+        food += CIVILIZATION_FOOD_GENERATED + (farm * CIVILIZATION_FOOD_GENERATED_PER_FARM);
+        wood += CIVILIZATION_WOOD_GENERATED + (carpentry * CIVILIZATION_WOOD_GENERATED_PER_CARPENTRY);
+        iron += CIVILIZATION_IRON_GENERATED + (smithy * CIVILIZATION_IRON_GENERATED_PER_SMITHY);
+        mana += magicTower * CIVILIZATION_MANA_GENERATED_PER_MAGIC_TOWER;
+
+        System.out.println("Recursos generados correctamente.");
+    }
+
     public void printStats() {
-        System.out.println("===== CIVILIZATION STATS =====");
+        System.out.println("========== CIVILIZATION STATS ==========");
+
+        System.out.println("----- TECHNOLOGY -----");
+        System.out.println("Attack: " + technologyAttack);
+        System.out.println("Defense: " + technologyDefense);
+
+        System.out.println("----- RESOURCES -----");
         System.out.println("Food: " + food);
         System.out.println("Wood: " + wood);
         System.out.println("Iron: " + iron);
         System.out.println("Mana: " + mana);
 
+        System.out.println("----- BUILDINGS -----");
         System.out.println("Farm: " + farm);
         System.out.println("Smithy: " + smithy);
         System.out.println("Carpentry: " + carpentry);
         System.out.println("Magic Tower: " + magicTower);
         System.out.println("Church: " + church);
 
-        int totalArmy = 0;
-        for (int i = 0; i < army.length; i++) {
-            totalArmy += army[i].size();
-        }
-        System.out.println("Army units: " + totalArmy);
+        System.out.println("----- ATTACK UNITS -----");
         System.out.println("Swordsman: " + army[0].size());
         System.out.println("Spearman: " + army[1].size());
         System.out.println("Crossbow: " + army[2].size());
         System.out.println("Cannon: " + army[3].size());
+
+        System.out.println("----- DEFENSE UNITS -----");
         System.out.println("Arrow Tower: " + army[4].size());
         System.out.println("Catapult: " + army[5].size());
         System.out.println("Rocket Launcher: " + army[6].size());
+
+        System.out.println("----- SPECIAL UNITS -----");
+        System.out.println("Magician: " + army[7].size());
+        System.out.println("Priest: " + army[8].size());
     }
 }

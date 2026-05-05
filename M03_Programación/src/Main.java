@@ -18,6 +18,10 @@ public class Main {
             System.out.println("8. Crear cañones");
             System.out.println("9. Crear torre mágica");
             System.out.println("10. Crear iglesia");
+            System.out.println("11. Simular batalla");
+            System.out.println("12. Mejorar tecnología de ataque");
+            System.out.println("13. Mejorar tecnología de defensa");
+            System.out.println("14. Generar recursos");
             System.out.println("0. Salir");
             System.out.print("Elige una opción: ");
 
@@ -52,6 +56,14 @@ public class Main {
                 civilization.newMagicTower();
             } else if (option == 10) {
                 civilization.newChurch();
+            } else if (option == 11) {
+                civilization.simulateBattle();
+            } else if (option == 12) {
+                civilization.upgradeTechnologyAttack();
+            } else if (option == 13) {
+                civilization.upgradeTechnologyDefense();
+            } else if (option == 14) {
+                civilization.generateResources();
             } else if (option == 0) {
                 System.out.println("¡Salir del Juego!");
                 break;
