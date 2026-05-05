@@ -114,6 +114,78 @@ public class Civilization {
         System.out.println("Lanceros creados: " + created);
     }
 
+    public void newMagicTower() {
+        if (food >= 5000 && wood >= 10000 && iron >= 12000) {
+            food -= 5000;
+            wood -= 10000;
+            iron -= 12000;
+            magicTower++;
+            System.out.println("Torre mágica creada correctamente.");
+        } else {
+            System.out.println("No tienes recursos suficientes.");
+        }
+    }
+
+    public void newChurch() {
+        if (food >= 5000 && wood >= 10000 && iron >= 12000) {
+            food -= 5000;
+            wood -= 10000;
+            iron -= 12000;
+            church++;
+            System.out.println("Iglesia creada correctamente.");
+        } else {
+            System.out.println("No tienes recursos suficientes.");
+        }
+    }
+
+    public void newCrossbow(int n) {
+        int created = 0;
+
+        for (int i = 0; i < n; i++) {
+            Crossbow crossbow = new Crossbow();
+
+            if (food >= crossbow.getFoodCost()
+                    && wood >= crossbow.getWoodCost()
+                    && iron >= crossbow.getIronCost()) {
+
+                food -= crossbow.getFoodCost();
+                wood -= crossbow.getWoodCost();
+                iron -= crossbow.getIronCost();
+
+                army.add(crossbow);
+                created++;
+            } else {
+                break;
+            }
+        }
+
+        System.out.println("Ballestas creadas: " + created);
+    }
+
+    public void newCannon(int n) {
+        int created = 0;
+
+        for (int i = 0; i < n; i++) {
+            Cannon cannon = new Cannon();
+
+            if (food >= cannon.getFoodCost()
+                    && wood >= cannon.getWoodCost()
+                    && iron >= cannon.getIronCost()) {
+
+                food -= cannon.getFoodCost();
+                wood -= cannon.getWoodCost();
+                iron -= cannon.getIronCost();
+
+                army.add(cannon);
+                created++;
+            } else {
+                break;
+            }
+        }
+
+        System.out.println("Cañones creados: " + created);
+    }
+
     public void printStats() {
         System.out.println("===== CIVILIZATION STATS =====");
         System.out.println("Food: " + food);

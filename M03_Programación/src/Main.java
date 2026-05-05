@@ -14,6 +14,11 @@ public class Main {
             System.out.println("4. Crear carpintería");
             System.out.println("5. Crear espadachines");
             System.out.println("6. Crear lanceros");
+            System.out.println("6. Crear lanceros");
+            System.out.println("7. Crear ballestas");
+            System.out.println("8. Crear cañones");
+            System.out.println("9. Crear torre mágica");
+            System.out.println("10. Crear iglesia");
             System.out.println("0. Salir");
             System.out.print("Elige una opción: ");
 
@@ -36,6 +41,18 @@ public class Main {
                 System.out.print("Cantidad de lanceros: ");
                 int n = sc.nextInt();
                 civilization.newSpearman(n);
+            } else if (option == 7) {
+                System.out.print("Cantidad de ballestas: ");
+                int n = sc.nextInt();
+                civilization.newCrossbow(n);
+            } else if (option == 8) {
+                System.out.print("Cantidad de cañones: ");
+                int n = sc.nextInt();
+                civilization.newCannon(n);
+            } else if (option == 9) {
+                civilization.newMagicTower();
+            } else if (option == 10) {
+                civilization.newChurch();
             } else if (option == 0) {
                 System.out.println("¡Salir del Juego!");
                 break;
