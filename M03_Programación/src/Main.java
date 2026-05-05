@@ -14,7 +14,6 @@ public class Main {
             System.out.println("4. Crear carpintería");
             System.out.println("5. Crear espadachines");
             System.out.println("6. Crear lanceros");
-            System.out.println("6. Crear lanceros");
             System.out.println("7. Crear ballestas");
             System.out.println("8. Crear cañones");
             System.out.println("9. Crear torre mágica");
