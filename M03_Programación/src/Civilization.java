@@ -303,6 +303,10 @@ public class Civilization {
         System.out.println("Sacerdotes creados: " + created);
     }
 
+    public ArrayList<MilitaryUnit>[] getArmy() {
+        return army;
+    }
+
     public void printStats() {
         System.out.println("===== CIVILIZATION STATS =====");
         System.out.println("Food: " + food);
