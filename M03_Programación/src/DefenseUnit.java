@@ -1,9 +1,9 @@
-public abstract class DefenseUnit {
+public abstract class DefenseUnit implements MilitaryUnit {
+
     protected int armor;
     protected int initialArmor;
     protected int baseDamage;
 
-    
     public DefenseUnit(int armor, int baseDamage) {
         this.armor = armor;
         this.initialArmor = armor;

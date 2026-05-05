@@ -189,6 +189,120 @@ public class Civilization {
         System.out.println("Cañones creados: " + created);
     }
 
+    public void newArrowTower(int n) {
+    int created = 0;
+
+    for (int i = 0; i < n; i++) {
+            ArrowTower arrowTower = new ArrowTower();
+
+            if (wood >= arrowTower.getWoodCost() && iron >= arrowTower.getIronCost()) {
+                wood -= arrowTower.getWoodCost();
+                iron -= arrowTower.getIronCost();
+
+                army[4].add(arrowTower);
+                created++;
+            } else {
+                break;
+            }
+        }
+
+        System.out.println("Torres de flechas creadas: " + created);
+    }
+
+    public void newCatapult(int n) {
+        int created = 0;
+
+        for (int i = 0; i < n; i++) {
+            Catapult catapult = new Catapult();
+
+            if (wood >= catapult.getWoodCost() && iron >= catapult.getIronCost()) {
+                wood -= catapult.getWoodCost();
+                iron -= catapult.getIronCost();
+
+                army[5].add(catapult);
+                created++;
+            } else {
+                break;
+            }
+        }
+
+        System.out.println("Catapultas creadas: " + created);
+    }
+
+    public void newRocketLauncher(int n) {
+        int created = 0;
+
+        for (int i = 0; i < n; i++) {
+            RocketLauncher rocketLauncher = new RocketLauncher();
+
+            if (wood >= rocketLauncher.getWoodCost() && iron >= rocketLauncher.getIronCost()) {
+                wood -= rocketLauncher.getWoodCost();
+                iron -= rocketLauncher.getIronCost();
+
+                army[6].add(rocketLauncher);
+                created++;
+            } else {
+                break;
+            }
+        }
+
+        System.out.println("Lanzacohetes creados: " + created);
+    }
+
+    public void newMagician(int n) {
+    if (magicTower == 0) {
+        System.out.println("Necesitas una Torre Mágica.");
+        return;
+    }
+
+    int created = 0;
+
+    for (int i = 0; i < n; i++) {
+            Magician magician = new Magician();
+
+            if (wood >= magician.getWoodCost()
+                    && mana >= magician.getManaCost()) {
+
+                wood -= magician.getWoodCost();
+                mana -= magician.getManaCost();
+
+                army[7].add(magician);
+                created++;
+            } else {
+                break;
+            }
+        }
+
+        System.out.println("Magos creados: " + created);
+    }
+
+    public void newPriest(int n) {
+    if (church == 0) {
+        System.out.println("Necesitas una Iglesia.");
+        return;
+    }
+
+    int created = 0;
+
+    for (int i = 0; i < n; i++) {
+            Priest priest = new Priest();
+
+            if (wood >= priest.getWoodCost()
+                    && mana >= priest.getManaCost()) {
+
+                wood -= priest.getWoodCost();
+                mana -= priest.getManaCost();
+
+                army[8].add(priest);
+                created++;
+            } else {
+                break;
+            }
+        }
+
+        System.out.println("Sacerdotes creados: " + created);
+    }
+
     public void printStats() {
         System.out.println("===== CIVILIZATION STATS =====");
         System.out.println("Food: " + food);
@@ -202,11 +316,17 @@ public class Civilization {
         System.out.println("Magic Tower: " + magicTower);
         System.out.println("Church: " + church);
 
-        System.out.println("Army units: " + army.length);
+        int totalArmy = 0;
+        for (int i = 0; i < army.length; i++) {
+            totalArmy += army[i].size();
+        }
+        System.out.println("Army units: " + totalArmy);
         System.out.println("Swordsman: " + army[0].size());
         System.out.println("Spearman: " + army[1].size());
         System.out.println("Crossbow: " + army[2].size());
         System.out.println("Cannon: " + army[3].size());
-        
+        System.out.println("Arrow Tower: " + army[4].size());
+        System.out.println("Catapult: " + army[5].size());
+        System.out.println("Rocket Launcher: " + army[6].size());
     }
 }
