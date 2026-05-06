@@ -22,6 +22,7 @@ public class Main {
             System.out.println("12. Mejorar tecnología de ataque");
             System.out.println("13. Mejorar tecnología de defensa");
             System.out.println("14. Generar recursos");
+            System.out.println("15. Guardar civilización en base de datos");
             System.out.println("0. Salir");
             System.out.print("Elige una opción: ");
 
@@ -64,6 +65,8 @@ public class Main {
                 civilization.upgradeTechnologyDefense();
             } else if (option == 14) {
                 civilization.generateResources();
+            } else if (option == 15) {
+                DatabaseManager.saveCivilization(civilization);
             } else if (option == 0) {
                 System.out.println("¡Salir del Juego!");
                 break;
