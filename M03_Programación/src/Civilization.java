@@ -19,6 +19,18 @@ public class Civilization implements Variables {
     private ArrayList<MilitaryUnit>[] army;
     private ArrayList<MilitaryUnit>[] enemyArmy;
 
+    public int getFood() { return food; }
+    public int getWood() { return wood; }
+    public int getIron() { return iron; }
+    public int getMana() { return mana; }
+    public int getFarm() { return farm; }
+    public int getSmithy() { return smithy; }
+    public int getCarpentry() { return carpentry; }
+    public int getMagicTower() { return magicTower; }
+    public int getChurch() { return church; }
+    public int getTechnologyDefense() { return technologyDefense; }
+    public int getTechnologyAttack() { return technologyAttack; }
+
     public Civilization() {
         food = 50000;
         wood = 50000;
