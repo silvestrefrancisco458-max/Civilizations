@@ -25,7 +25,7 @@ CREATE TABLE battle (
     waste_iron INT
 );
 
-INSERT INTO civilizations (
+INSERT INTO civilization (
     food, wood, iron, mana,
     farm, smithy, carpentry, 
     magic_tower, church,
