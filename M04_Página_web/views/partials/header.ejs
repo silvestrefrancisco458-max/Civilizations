@@ -1,11 +1,35 @@
 <link rel="stylesheet" href="../../public/css/style.css">
-<header class="header">
-    <nav>
-        <a href="../index.ejs">Inicio</a>
-        <a href="../batalles.ejs">Batalles</a>
-        <a href="../informe.ejs">Informe</a>
-        <a href="../civilitzacio.ejs">Civilització</a>
-        <a href="../programadors.ejs">Programadors</a>
-    </nav>
-    <h1>Hola</h1>
-</header>
+<div class="htmlmenu-wrapper">
+  <div class="htmlmenu-header">
+    <div class="htmlmenu-container">
+      <div class="htmlmenu-logo">
+        <a href="/">
+          <img src="static/images/logo.png" alt="htmlmenu">
+        </a>
+      </div>
+      <input type="checkbox" id="htmlmenu-toggle" class="htmlmenu-toggle">
+      <label for="htmlmenu-toggle"><span></span><span></span><span></span></label>
+      <nav class="htmlmenu-menu htmlmenu-submenu-scale" role="navigation">
+        <ul>
+          <li class="htmlmenu-menu-current">
+            <a href="../index.ejs">Inicio</a>
+          </li>
+          <li>
+            <a href="../batalles.ejs">Batalles</a>
+          </li>
+          <li>
+            <a href="../informe.ejs">Informe</a>
+          </li>
+          <li>
+            <a href="../civilitzacio.ejs">Civilització</a>
+          </li>
+          <li>
+            <a href="../programadors.ejs">Programadors</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="htmlmenu-header-shadow"></div>
+  </div>
+  <div class="htmlmenu-header-spacer"></div>
+</div>
