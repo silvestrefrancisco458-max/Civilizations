@@ -1,3 +1,29 @@
+/*===BODY===*/
+body{
+    font-family: Arial, Helvetica, sans-serif;    
+}
+/*===HEADER===*/
+.header{
+    color: black;
+    background-color: rebeccapurple;
+}
+.header h1{
+    background-color: darkblue;
+    color: firebrick;
+    
+    text-align: center;
+}
+.header a{
+    color: black;
+    background-color: aqua;
+    padding: 5px;
+    text-decoration: none;    
+}
+.header a:hover{
+    background-color: black;
+    color: white;
+    padding: 5px;
+}
 /*===FOOTER===*/
 .footer{
     background-color: white;
