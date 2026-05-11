@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="../public/css/style.css"/>
 </head>
 <body>
+    <%- include('partials/header')%>
     <h1>Programadors</h1>
+    <!--
     <p>Oscar</p>
     <img src="foto_oscar.jpg" alt="Foto de Oscar">
     <p>Que ha trabajado en el proyecto</p>
@@ -14,35 +16,35 @@
     <img src="foto_francisco.jpg" alt="Foto de Francisco">
     <p>Que ha trabajado en el proyecto</p>
     <p>Luis</p>
+    <img src="foto_luis.jpg" alt="Foto de Luis">
+    <p>Que ha trabajado en el proyecto</p>
+    -->
     <div id="grid">
         <!--Un cuadrado con cada cosa que se ha de poner-->
         <div class="carta-producto">
-            <div class="producto-img" style="background-color: blueviolet;"></div>
+            <div class="producto-img" style="background-color: blueviolet;" src="../public/imatges/foto_francisco.png" alt="Foto de Francisco"></div>
             <div class="producto-info">
-                <h3>Camiseta</h3>
-                <p>Camiseta blanca básica</p>
-                <div class="precio">27€</div>
+                <h3>Francisco</h3>
+                <p>Encargado de hacer la cosa de Java y la base de datos</p>
             </div>
         </div>
         <!--Un cuadrado con cada cosa que se ha de poner-->
         <div class="carta-producto">
-            <div class="producto-img" style="background-color: blueviolet;"></div>
+            <div class="producto-img" style="background-color: blueviolet;"src="../public/imatges/foto_oscar.png" alt="Foto de Oscar"></div>
             <div class="producto-info">
-                <h3>Camiseta</h3>
-                <p>Camiseta blanca básica</p>
-                <div class="precio">27€</div>
+                <h3>Oscar</h3>
+                <p>Encargado de hacer la página web</p>
             </div>
         </div>
         <!--Un cuadrado con cada cosa que se ha de poner-->
         <div class="carta-producto">
-            <div class="producto-img" style="background-color: blueviolet;"></div>
+            <div class="producto-img" style="background-color: blueviolet;"src="../public/imatges/foto_luis.png" alt="Foto de Luis"></div>
             <div class="producto-info">
-                <h3>Camiseta</h3>
-                <p>Camiseta blanca básica</p>
-                <div class="precio">27€</div>
+                <h3>Luis</h3>
+                <p>Encargado de hacer la página web y que funcione Proxmox correctamente</p>
             </div>
         </div>
-    <img src="foto_luis.jpg" alt="Foto de Luis">
-    <p>Que ha trabajado en el proyecto</p>
+    </div>
+    <%- include ('partials/footer')%>
 </body>
 </html>
