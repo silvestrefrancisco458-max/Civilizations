@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Civilización</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav>
+    <h1>Civilizations</h1>
+    <a href="/">Inicio</a>
+    <a href="/civilization">Civilización</a>
+    <a href="/battles">Batallas</a>
+    <a href="/programmers">Programadores</a>
+  </nav>
+
+  <main>
+    <h2>Estado de la civilización</h2>
+
+    <% if (civilization) { %>
+      <section class="cards">
+        <div class="card">Comida: <%= civilization.food %></div>
+        <div class="card">Madera: <%= civilization.wood %></div>
+        <div class="card">Hierro: <%= civilization.iron %></div>
+        <div class="card">Maná: <%= civilization.mana %></div>
+        <div class="card">Granjas: <%= civilization.farm %></div>
+        <div class="card">Herrerías: <%= civilization.smithy %></div>
+        <div class="card">Carpinterías: <%= civilization.carpentry %></div>
+        <div class="card">Torres mágicas: <%= civilization.magic_tower %></div>
+        <div class="card">Iglesias: <%= civilization.church %></div>
+      </section>
+    <% } else { %>
+      <p>No hay datos de civilización guardados.</p>
+    <% } %>
+  </main>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Informe de batalla</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav>
+    <h1>Civilizations</h1>
+    <a href="/">Inicio</a>
+    <a href="/civilization">Civilización</a>
+    <a href="/battles">Batallas</a>
+    <a href="/programmers">Programadores</a>
+  </nav>
+
+  <main>
+    <% if (battle) { %>
+      <h2>Informe batalla #<%= battle.id %></h2>
+
+      <div class="card">
+        <p><strong>Ganador:</strong> <%= battle.winner %></p>
+        <p><strong>Madera conseguida:</strong> <%= battle.waste_wood %></p>
+        <p><strong>Hierro conseguido:</strong> <%= battle.waste_iron %></p>
+      </div>
+
+      <pre><%= battle.battle_report %></pre>
+    <% } else { %>
+      <h2>No existe esta batalla</h2>
+    <% } %>
+  </main>
+</body>
+</html>

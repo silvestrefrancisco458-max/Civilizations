@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Batallas</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav>
+    <h1>Civilizations</h1>
+    <a href="/">Inicio</a>
+    <a href="/civilization">Civilización</a>
+    <a href="/battles">Batallas</a>
+    <a href="/programmers">Programadores</a>
+  </nav>
+
+  <main>
+    <h2>Batallas jugadas: <%= total %></h2>
+
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Ganador</th>
+        <th>Madera</th>
+        <th>Hierro</th>
+        <th>Informe</th>
+      </tr>
+
+      <% battles.forEach(battle => { %>
+        <tr>
+          <td><%= battle.id %></td>
+          <td><%= battle.winner %></td>
+          <td><%= battle.waste_wood %></td>
+          <td><%= battle.waste_iron %></td>
+          <td><a href="/informe?informe=<%= battle.id %>">Ver informe</a></td>
+        </tr>
+      <% }) %>
+    </table>
+  </main>
+</body>
+</html>
