@@ -44,9 +44,9 @@ Civilizations es un juego de estrategia desarrollado en Java donde el jugador pu
 Civilizations/
 │
 ├── M02_BaseDatos/
-│   └── script_civilizations.sql
+│   └── civilization.sql
 │
-├── M03_Programación/
+├── M03_java/
 │   └── src/
 │       └── ArrawTower.java
 │       └── attackUnit.java

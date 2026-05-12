@@ -6,36 +6,90 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <nav>
+
+<nav>
+  <div class="brand">
+    <img src="/images/logo.png">
     <h1>Civilizations</h1>
+  </div>
+
+  <div class="links">
     <a href="/">Inicio</a>
     <a href="/civilization">Civilización</a>
     <a href="/battles">Batallas</a>
     <a href="/programmers">Programadores</a>
-  </nav>
+  </div>
+</nav>
 
-  <main>
-    <h2>Batallas jugadas: <%= total %></h2>
+<main>
+  <section class="page-hero" style="background-image:
+    linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.75)),
+    url('/images/programmers.jpg');">
+<div>
+  <h2>Historial de Batallas</h2>
+  <p>Consulta todas las guerras y recompensas obtenidas.</p>
+</div>
 
-    <table>
-      <tr>
-        <th>ID</th>
-        <th>Ganador</th>
-        <th>Madera</th>
-        <th>Hierro</th>
-        <th>Informe</th>
-      </tr>
+</section>
 
-      <% battles.forEach(battle => { %>
-        <tr>
-          <td><%= battle.id %></td>
-          <td><%= battle.winner %></td>
-          <td><%= battle.waste_wood %></td>
-          <td><%= battle.waste_iron %></td>
-          <td><a href="/informe?informe=<%= battle.id %>">Ver informe</a></td>
-        </tr>
-      <% }) %>
-    </table>
-  </main>
+<div class="cards">
+
+  <div class="card">
+    ⚔ Total batallas: <%= battles.length %>
+  </div>
+
+  <div class="card">
+    🪵 Madera total:
+    <%= battles.reduce((a,b)=>a+b.waste_wood,0) %>
+  </div>
+
+  <div class="card">
+    ⛓ Hierro total:
+    <%= battles.reduce((a,b)=>a+b.waste_iron,0) %>
+  </div>
+
+</div>
+
+<table>
+
+<tr>
+  <th>ID</th>
+  <th>Ganador</th>
+  <th>Madera</th>
+  <th>Hierro</th>
+  <th>Informe</th>
+</tr>
+
+<% battles.forEach(battle => { %>
+
+<tr>
+
+  <td><%= battle.id %></td>
+
+  <td>
+    <% if(battle.winner === "Civilization"){ %>
+      🏆 Victoria
+    <% } else { %>
+      ❌ Derrota
+    <% } %>
+  </td>
+
+  <td><%= battle.waste_wood %></td>
+  <td><%= battle.waste_iron %></td>
+
+  <td>
+    <a href="/informe?informe=<%= battle.id %>">
+      Ver informe
+    </a>
+  </td>
+
+</tr>
+
+<% }) %>
+
+</table>
+
+</main>
+
 </body>
 </html>
