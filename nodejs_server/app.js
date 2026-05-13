@@ -5,7 +5,7 @@ const db = require("./db/database");
 const app = express();
 const port = 3000;
 
-app.set("view engine", "ejs");
+app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "../views"));
 
 app.use(express.static(path.join(__dirname, "../public")));
@@ -24,18 +24,31 @@ app.get("/", async (req, res) => {
 
 app.get("/batalles", async (req, res) => {
   try {
+
     const [batalles] = await db.query(
       "SELECT * FROM batalles ORDER BY data DESC"
     );
 
-    const [total] = await db.query(
-      "SELECT COUNT(*) AS total FROM batalles"
-    );
+    const batallesView = batalles.map(batalla => ({
+      ...batalla,
+      victoria: batalla.ganador === "Civilization"
+    }));
+
+    const totalFusta = batalles.reduce((total, batalla) => {
+      return total + batalla.fusta;
+    }, 0);
+
+    const totalFerro = batalles.reduce((total, batalla) => {
+      return total + batalla.ferro;
+    }, 0);
 
     res.render("batalles", {
-      batalles,
-      total: total[0].total
+      batalles: batallesView,
+      totalBatalles: batalles.length,
+      totalFusta,
+      totalFerro
     });
+
   } catch (error) {
     res.send("Error en batalles: " + error.message);
   }

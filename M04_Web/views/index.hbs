@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Civilizations</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <nav>
+    <div class="brand">
+      <img src="/images/logo.png" alt="Logo Civilizations">
+      <h1>Civilizations</h1>
+    </div>
+
+    <div class="links">
+      <a href="/">Inicio</a>
+      <a href="/civilization">Civilización</a>
+      <a href="/battles">Batallas</a>
+      <a href="/programmers">Programadores</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <section class="hero">
+      <div>
+        <h2>Bienvenido a Civilizations</h2>
+
+        <p>
+          Un juego de estrategia medieval donde gestionas recursos,
+          construyes edificios, entrenas unidades y defiendes tu
+          civilización de ataques enemigos.
+        </p>
+      </div>
+    </section>
+
+    <section class="info-game">
+
+      <h2>Información del juego</h2>
+
+      <p>
+        En Civilizations empiezas con una pequeña civilización.
+        Tu objetivo es mejorarla creando granjas,
+        carpinterías, herrerías, torres mágicas e iglesias.
+        Con los recursos obtenidos podrás crear unidades
+        como espadachines, lanceros, ballestas, cañones,
+        magos y sacerdotes.
+      </p>
+
+      <p>
+        Las batallas generan recompensas como madera y hierro.
+        Cada victoria ayuda a mejorar tu civilización,
+        pero también puedes perder unidades durante el combate.
+      </p>
+
+    </section>
+
+    <section class="cards">
+
+      <div class="card">
+        🍎 Comida:
+        {{#if civilization}}
+          {{civilization.food}}
+        {{else}}
+          0
+        {{/if}}
+      </div>
+
+      <div class="card">
+        🪵 Madera:
+        {{#if civilization}}
+          {{civilization.wood}}
+        {{else}}
+          0
+        {{/if}}
+      </div>
+
+      <div class="card">
+        ⛓ Hierro:
+        {{#if civilization}}
+          {{civilization.iron}}
+        {{else}}
+          0
+        {{/if}}
+      </div>
+
+      <div class="card">
+        🔮 Maná:
+        {{#if civilization}}
+          {{civilization.mana}}
+        {{else}}
+          0
+        {{/if}}
+      </div>
+
+    </section>
+
+    <h2>Últimas batallas</h2>
+
+    <table>
+
+      <tr>
+        <th>ID</th>
+        <th>Ganador</th>
+        <th>Madera</th>
+        <th>Hierro</th>
+        <th>Informe</th>
+      </tr>
+
+      {{#each battles}}
+
+      <tr>
+
+        <td>{{this.id}}</td>
+        <td>{{this.winner}}</td>
+        <td>{{this.waste_wood}}</td>
+        <td>{{this.waste_iron}}</td>
+
+        <td>
+          <a href="/informe?informe={{this.id}}">
+            Ver informe
+          </a>
+        </td>
+
+      </tr>
+
+      {{/each}}
+
+    </table>
+
+  </main>
+
+</body>
+</html>
