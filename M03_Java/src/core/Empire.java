@@ -153,55 +153,67 @@ public class Empire {
     }
 
     public boolean createMagician() {
-        if (magicTowers <= 0) return false;
+        if (magicTowers <= 0) {
+            return false;
+        }
 
         if (pay(1200, 200, 50, 1000)) {
             magicians++;
             return true;
         }
+
         return false;
     }
 
     public boolean createPriest() {
-        if (churches <= priests) return false;
+        if (churches <= priests) {
+            return false;
+        }
 
         if (pay(1500, 0, 0, 1000)) {
             priests++;
             return true;
         }
+
         return false;
     }
 
-    public void generateResources() {
+    public void addResources() {
         food += 100 + farms * 50;
         wood += 80 + carpentries * 40;
         iron += 60 + smithies * 30;
         mana += magicTowers * 30;
     }
-    
+
+    public void generateResources() {
+        addResources();
+    }
+
     public int getTotalUnits() {
-        return swordsmen + spearmen + crossbows + cannons + arrowTowers + catapults + rocketTowers + magicians + priests;
+        return swordsmen + spearmen + crossbows + cannons
+                + arrowTowers + catapults + rocketTowers
+                + magicians + priests;
     }
 
     public int getTotalAttack() {
-        return swordsmen * 80 +
-               spearmen * 150 +
-               crossbows * 1000 +
-               cannons * 700 +
-               arrowTowers * 80 +
-               catapults * 250 +
-               rocketTowers * 2000 +
-               magicians * 3000;
+        return swordsmen * 80
+                + spearmen * 150
+                + crossbows * 1000
+                + cannons * 700
+                + arrowTowers * 80
+                + catapults * 250
+                + rocketTowers * 2000
+                + magicians * 3000;
     }
 
     public int getTotalDefense() {
-        return swordsmen * 400 +
-               spearmen * 1000 +
-               crossbows * 6000 +
-               cannons * 8000 +
-               arrowTowers * 200 +
-               catapults * 1200 +
-               rocketTowers * 7000;
+        return swordsmen * 400
+                + spearmen * 1000
+                + crossbows * 6000
+                + cannons * 8000
+                + arrowTowers * 200
+                + catapults * 1200
+                + rocketTowers * 7000;
     }
 
     public void addBattleReward(int woodReward, int ironReward) {
