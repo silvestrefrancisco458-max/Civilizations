@@ -1,38 +1,48 @@
 # Civilizations
 
-Proyecto final DAW - Civilizations
+Proyecto final DAW — Civilizations
 
-## Descripción
+---
 
-Civilizations es un juego de estrategia desarrollado en Java donde el jugador puede:
+# Descripción
 
-- Crear edificios
-- Generar recursos
+Civilizations es un videojuego de estrategia medieval desarrollado en Java con conexión a MySQL y visualización web mediante Node.js.
+
+El jugador puede:
+
+- Gestionar recursos
+- Construir edificios
 - Crear unidades militares
-- Simular batallas
+- Defender la civilización
+- Simular batallas automáticas
 - Mejorar tecnologías
-- Guardar y cargar datos desde MySQL
-- Visualizar información desde una página web Node.js
+- Guardar datos en MySQL
+- Consultar estadísticas desde una página web
 
 ---
 
 # Tecnologías utilizadas
 
-## M02 - Base de datos
+## M02 — Base de Datos
 - MySQL
 - MariaDB
 - JDBC
 
-## M03 - Programación
+## M03 — Programación
 - Java
-- Programación orientada a objetos
+- Java Swing
+- Programación Orientada a Objetos
 - Excepciones
+- Herencia y polimorfismo
 - Arrays y ArrayList
+- TimerTask
 
-## M04 - Página web
+## M04 — Página Web
 - Node.js
-- Express
-- EJS
+- Express.js
+- Handlebars (HBS)
+- HTML5
+- CSS3
 - PM2
 - Proxmox
 
@@ -46,47 +56,74 @@ Civilizations/
 ├── M02_BaseDatos/
 │   └── civilization.sql
 │
-├── M03_java/
+├── M03_Java/
 │   └── src/
-│       └── ArrawTower.java
-│       └── attackUnit.java
-│       └── Battle.java
-│       └── BuildingException.java
-│       └── Cannon.java
-│       └── Catapult.java
-│       └── Civilization.java
-│       └── Crossbow.java
-│       └── DatabaseManager.java
-│       └── DefenseUnit.java
-│       └── Magician.java
-│       └── Main.java
-│       └── MilitaryUnit.java
-│       └── Priest.java
-│       └── ResourceException.java
-│       └── RocketLauncher.java
-│       └── Spearman.java
-│       └── Swordsman.java
-│       └── Variable.java
+│       ├── core/
+│       │   ├── DatabaseManager.java
+│       │   ├── DatabaseTest.java
+│       │   ├── Empire.java
+│       │   ├── GameSettings.java
+│       │   ├── Main.java
+│       │   └── War.java
+│       │
+│       ├── errors/
+│       │   ├── BuildingError.java
+│       │   └── ResourceError.java
+│       │
+│       ├── fighters/
+│       │   └── CombatUnit.java
+│       │
+│       ├── fighters.defensive/
+│       │   ├── ArrowTower.java
+│       │   ├── Catapult.java
+│       │   ├── DefensiveUnit.java
+│       │   └── RocketTower.java
+│       │
+│       ├── fighters.mystic/
+│       │   ├── MysticUnit.java
+│       │   ├── Priest.java
+│       │   └── Wizard.java
+│       │
+│       ├── fighters.offensive/
+│       │   ├── Archer.java
+│       │   ├── Cannon.java
+│       │   ├── Knight.java
+│       │   ├── Lancer.java
+│       │   └── OffensiveUnit.java
+│       │
+│       ├── images/
+│       │
+│       └── Interfacegame/
+│           ├── AlertPanel.java
+│           ├── ArmyPanel.java
+│           ├── BuildingsPanel.java
+│           ├── EmpirePanel.java
+│           ├── EmpireWindow.java
+│           ├── MenuPanel.java
+│           ├── ResourcesPanel.java
+│           ├── StatisticsPanel.java
+│           ├── TechnologyPanel.java
+│           └── WarPanel.java
 │
-├── M04_Página_web/
-│   └── datebase/
-│   └── db/
-│   └── public/
-│       └── css/
-│           └── style.css
-│       └── img/
-│   └── views/
-│       └── partials/
-│           └── footer.ejs
-│           └── header.ejs
-│       └── batalles.ejs
-│       └── civilitzacio.ejs
-│       └── index.ejs
-│       └── informe.ejs
-│       └── programadors.ejs
-│   └── .env
-│   └── app.js
-│   └── package.json
+├── M04_Web/
+│   ├── db/
+│   │   └── database.js
+│   │
+│   ├── public/
+│   │   ├── css/
+│   │   │   └── style.css
+│   │   └── images/
+│   │
+│   ├── views/
+│   │   ├── battles.hbs
+│   │   ├── civilization.hbs
+│   │   ├── index.hbs
+│   │   ├── informe.hbs
+│   │   └── programmers.hbs
+│   │
+│   ├── app.js
+│   ├── package.json
+│   └── package-lock.json
 │
 ├── nodejs_server/
 │
@@ -236,5 +273,7 @@ https://civil3.ieti.site
 # Autor
 
 Francisco Alberto Silvestre Ramírez
+Luis Portero
+Oscar Fernandez
 
 Proyecto DAW - Civilizations
