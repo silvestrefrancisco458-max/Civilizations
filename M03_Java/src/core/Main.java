@@ -3,14 +3,17 @@ package core;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.swing.SwingUtilities;
+
+import Interfacegame.EmpireWindow;
+
 public class Main {
 
     public static void main(String[] args) {
 
         Empire empire = new Empire();
 
-        // Abrir ventana gráfica
-        Interfacegame.EmpireWindow window = new Interfacegame.EmpireWindow(empire);
+        EmpireWindow window = new EmpireWindow(empire);
         window.setVisible(true);
 
         Timer timer = new Timer();
@@ -21,11 +24,14 @@ public class Main {
                 empire.addResources();
                 DatabaseManager.saveEmpire(empire);
 
-                System.out.println("Recursos generados automáticamente");
+                SwingUtilities.invokeLater(() -> {
+                    window.refreshWindow();
+                    window.addLog("Recursos generados: +comida, +madera, +hierro y +maná");
+                });
             }
         }, 60000, 60000);
 
-        // Cada 2 minutos ocurre un ataque
+        // Cada 1 minuto ocurre un ataque enemigo
         timer.schedule(new TimerTask() {
             public void run() {
                 War war = new War(empire);
@@ -33,8 +39,11 @@ public class Main {
 
                 DatabaseManager.saveEmpire(empire);
 
-                System.out.println("Ataque enemigo realizado");
+                SwingUtilities.invokeLater(() -> {
+                    window.refreshWindow();
+                    window.addLog("Ataque enemigo realizado");
+                });
             }
-        }, 120000, 120000);
+        }, 60000, 60000);
     }
 }
