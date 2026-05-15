@@ -182,3 +182,18 @@ pre {
   white-space: pre-wrap;
   border-radius: 12px;
 }
+
+/* FOOTER */
+.footer{
+    margin-top: 40px;
+    padding: 25px;
+    background: #090909;
+    border-top: 2px solid #d89b27;
+    text-align: center;
+    color: white;
+}
+
+.footer p{
+    margin: 5px;
+    font-size: 15px;
+}
